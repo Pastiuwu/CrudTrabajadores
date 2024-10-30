@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Formulario de Trabajador{% endblock %}
+
+{% block content %}
+<h1>{% if form.instance.pk %}Editar Trabajador{% else %}Agregar Trabajador{% endif %}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <a href="{% url 'trabajador_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

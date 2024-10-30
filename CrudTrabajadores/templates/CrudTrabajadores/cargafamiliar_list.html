@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Listado de Cargas Familiares{% endblock %}
+
+{% block content %}
+<h1>Listado de Cargas Familiares</h1>
+<a href="{% url 'carga_familiar_create' %}" class="btn btn-primary mb-2">Agregar Carga Familiar</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Relación</th>
+            <th>Grupo de Salud</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for carga in cargas_familiares %}
+            <tr>
+                <td>{{ carga.nombre_carga }}</td>
+                <td>{{ carga.relacion }}</td>
+                <td>{{ carga.grupo_salud }}</td>
+                <td>
+                    <a href="{% url 'carga_familiar_edit' carga.id %}" class="btn btn-secondary btn-sm">Editar</a>
+                    <a href="{% url 'carga_familiar_delete' carga.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

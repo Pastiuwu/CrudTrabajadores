@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de Áreas{% endblock %}
+
+{% block content %}
+<h1>Listado de Áreas</h1>
+<a href="{% url 'area_create' %}" class="btn btn-primary mb-2">Agregar Área</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for area in areas %}
+            <tr>
+                <td>{{ area.nombre_area }}</td>
+                <td>{{ area.tipo_area }}</td>
+                <td>
+                    <a href="{% url 'area_edit' area.id %}" class="btn btn-secondary btn-sm">Editar</a>
+                    <a href="{% url 'area_delete' area.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
