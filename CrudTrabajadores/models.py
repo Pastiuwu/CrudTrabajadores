@@ -1,11 +1,9 @@
 from django.db import models
-
-from django.db import models
 from django.core.exceptions import ValidationError
 
 def validate_active_status(value):
     if not isinstance(value, bool):
-        raise ValidationError("El estado activo debe ser un valor booleano.")
+        raise ValidationError("BORRAR VALIDACION XD")
 
 class Trabajador(models.Model):
     nombre = models.CharField(max_length=50, blank=False)
